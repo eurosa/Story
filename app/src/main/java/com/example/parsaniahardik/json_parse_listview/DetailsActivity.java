@@ -1,5 +1,6 @@
 package com.example.parsaniahardik.json_parse_listview;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -9,8 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.TextView;
 
 public class DetailsActivity extends AppCompatActivity {
+
+    String idNote;
+    public TextView coiu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +23,11 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Intent in = getIntent();
+        idNote = in.getStringExtra("country");
+        coiu=findViewById(R.id.wer);
+        coiu.setText(idNote);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

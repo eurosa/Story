@@ -8,8 +8,6 @@ import android.os.AsyncTask;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -35,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+      //  setTheme(R.style.splashScreenTheme);
         setContentView(R.layout.activity_main);
 
         listView = findViewById(R.id.lv);
@@ -81,17 +80,6 @@ public class MainActivity extends AppCompatActivity {
                     tennisAdapter = new TennisAdapter(this,tennisModelArrayList);
                     listView.setAdapter(tennisAdapter);
 
-
-
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-                    {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view,
-                                                int position, long id) {
-                            // TODO Auto-generated method stub
-                            Toast.makeText(MainActivity.this, "Love"+id, Toast.LENGTH_SHORT).show();
-                        }
-                    });
 
                 }else {
                     Toast.makeText(MainActivity.this, getErrorCode(response), Toast.LENGTH_SHORT).show();

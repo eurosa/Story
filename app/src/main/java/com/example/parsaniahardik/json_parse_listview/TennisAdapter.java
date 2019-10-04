@@ -1,6 +1,7 @@
 package com.example.parsaniahardik.json_parse_listview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class TennisAdapter extends BaseAdapter {
 
@@ -49,7 +52,7 @@ public class TennisAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
         if (convertView == null) {
@@ -73,8 +76,15 @@ public class TennisAdapter extends BaseAdapter {
         holder.tvname.setText("Name: "+tennisModelArrayList.get(position).getName());
         holder.tvcountry.setText("Country: "+tennisModelArrayList.get(position).getCountry());
         holder.tvcity.setText("City: "+tennisModelArrayList.get(position).getCity());
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailsActivity.class);
+                intent.putExtra("country", tennisModelArrayList.get(position).getCountry());
+                startActivity(context,intent,null);
+            }
+        });
 
-        
 
         return convertView;
     }
