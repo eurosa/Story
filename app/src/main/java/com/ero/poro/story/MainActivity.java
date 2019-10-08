@@ -1,18 +1,13 @@
-package com.example.parsaniahardik.json_parse_listview;
+package com.ero.poro.story;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.AsyncTask;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;

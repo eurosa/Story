@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.parsaniahardik.json_parse_listview">
+    package="com.ero.poro.story">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,16 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Main2Activity"
+            android:name="com.ero.poro.story.Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".DetailsActivity"
+            android:name="com.ero.poro.story.DetailsActivity"
             android:label="@string/title_activity_details"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity" />
+        <activity android:name="com.ero.poro.story.MainActivity" />
         <activity
-            android:name=".Splash"
+            android:name="com.ero.poro.story.Splash"
             android:label="@string/title_activity_splash_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

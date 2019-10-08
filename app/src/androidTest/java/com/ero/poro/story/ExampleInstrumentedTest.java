@@ -1,4 +1,4 @@
-package com.example.parsaniahardik.json_parse_listview;
+package com.ero.poro.story;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.parsaniahardik.json_parse_listview", appContext.getPackageName());
+        assertEquals("com.example.parsaniahardik.loveStory", appContext.getPackageName());
     }
 }

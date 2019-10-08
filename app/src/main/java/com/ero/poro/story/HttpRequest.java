@@ -1,4 +1,4 @@
-package com.example.parsaniahardik.json_parse_listview;
+package com.ero.poro.story;
 
 /**
  * Created by Parsania Hardik on 18-Apr-17.
