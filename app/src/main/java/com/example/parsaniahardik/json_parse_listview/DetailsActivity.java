@@ -24,11 +24,19 @@ public class DetailsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        if (getSupportActionBar() != null) {
+
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);/*showing Back button on toolbar*/
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
         Intent in = getIntent();
         idNote = in.getStringExtra("country");
         coiu=findViewById(R.id.wer);
         coiu.setText(idNote);
 
+        /*
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +45,14 @@ public class DetailsActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        */
     }
 
+
+//Click on Bac button to back in Parent Activity
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 }

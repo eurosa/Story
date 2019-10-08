@@ -4,14 +4,21 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.AsyncTask;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private TennisAdapter tennisAdapter;
 
     private static ProgressDialog mProgressDialog;
+    public ImageButton review;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +44,22 @@ public class MainActivity extends AppCompatActivity {
       //  setTheme(R.style.splashScreenTheme);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar;
+       // toolbar = findViewById(R.id.toolbar_main);
+
+       // setSupportActionBar(toolbar);
+        /*
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            toolbar.setNavigationIcon(R.drawable.ic_menu_share);  // Replace with your icon
+
+        }
+*/
+
         listView = findViewById(R.id.lv);
+
+
+
 
         fetchJSON();
 
@@ -183,4 +206,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void share(View view) {
+    }
 }
