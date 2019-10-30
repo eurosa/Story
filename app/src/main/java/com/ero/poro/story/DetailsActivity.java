@@ -6,18 +6,25 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class DetailsActivity extends AppCompatActivity {
 
     String idNote;
+    String image;
     public TextView coiu;
+    public String imageURL;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        ImageView imageView=findViewById(R.id.imagePreview);
         setSupportActionBar(toolbar);
 
 
@@ -28,9 +35,13 @@ public class DetailsActivity extends AppCompatActivity {
         }
 
         Intent in = getIntent();
-        idNote = in.getStringExtra("country");
+        idNote = in.getStringExtra("city");
         coiu=findViewById(R.id.wer);
         coiu.setText(idNote);
+        imageURL=in.getStringExtra("imageUrl");
+        Picasso.get().load(imageURL).into(imageView);
+
+        //imageView.setImageURI(imageView);
 
         /*
         FloatingActionButton fab = findViewById(R.id.fab);

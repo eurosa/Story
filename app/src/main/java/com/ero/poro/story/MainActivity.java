@@ -21,10 +21,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+//private String jsonURL7 = "https://demonuts.com/Demonuts/JsonTest/Tennis/json_parsing.php";
 
 public class MainActivity extends AppCompatActivity {
+//http://localhost/inventory-management-system/php_action/json.php
+private String jsonURL = "http://localhost/inventory-management-system/php_action/json.php";
 
-    private String jsonURL = "https://demonuts.com/Demonuts/JsonTest/Tennis/json_parsing.php";
     private final int jsoncode = 1;
     private ListView listView;
     ArrayList<TennisModel> tennisModelArrayList;
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                     HashMap<String, String> map=new HashMap<>();
                     try {
                         HttpRequest req = new HttpRequest(jsonURL);
+                        Log.d("jsonurl",jsonURL);
+
                         response = req.prepare(HttpRequest.Method.POST).withData(map).sendAndReadString();
                     } catch (Exception e) {
                         response=e.getMessage();
@@ -117,10 +121,10 @@ public class MainActivity extends AppCompatActivity {
 
                     TennisModel playersModel = new TennisModel();
                     JSONObject dataobj = dataArray.getJSONObject(i);
-                    playersModel.setName(dataobj.getString("name"));
-                    playersModel.setCountry(dataobj.getString("country"));
-                    playersModel.setCity(dataobj.getString("city"));
-                    playersModel.setImgURL(dataobj.getString("imgURL"));
+                    playersModel.setName(dataobj.getString("brand"));
+                    playersModel.setCountry(dataobj.getString("category_name"));
+                    playersModel.setCity(dataobj.getString("product_id"));
+                    playersModel.setImgURL(dataobj.getString("imageUrl"));
                     tennisModelArrayList.add(playersModel);
 
                 }

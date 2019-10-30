@@ -80,7 +80,9 @@ public class TennisAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailsActivity.class);
-                intent.putExtra("country", tennisModelArrayList.get(position).getCountry());
+                intent.putExtra("city", tennisModelArrayList.get(position).getCity());
+                intent.putExtra("imageUrl", tennisModelArrayList.get(position).getImgURL());
+
                 startActivity(context,intent,null);
             }
         });
