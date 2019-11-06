@@ -122,8 +122,8 @@ private String jsonURL = "http://localhost/inventory-management-system/php_actio
                     TennisModel playersModel = new TennisModel();
                     JSONObject dataobj = dataArray.getJSONObject(i);
                     playersModel.setName(dataobj.getString("brand"));
-                    playersModel.setCountry(dataobj.getString("category_name"));
-                    playersModel.setCity(dataobj.getString("product_id"));
+                    playersModel.setTitle(dataobj.getString("category_name"));
+                    playersModel.setDescription(dataobj.getString("product_id"));
                     playersModel.setImgURL(dataobj.getString("imageUrl"));
                     tennisModelArrayList.add(playersModel);
 

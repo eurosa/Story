@@ -2,7 +2,7 @@ package com.ero.poro.story;
 
 public class TennisModel {
 
-    private String name, country, city, imgURL;
+    private String name, title, description, imgURL;
 
     public String getImgURL(){
         return imgURL;
@@ -20,19 +20,19 @@ public class TennisModel {
         this.name = name;
     }
 
-    public String getCountry() {
-        return country;
+    public String getTitle() {
+        return title;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getCity() {
-        return city;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

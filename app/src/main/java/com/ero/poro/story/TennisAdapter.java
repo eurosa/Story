@@ -2,6 +2,10 @@ package com.ero.poro.story;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,15 +76,17 @@ public class TennisAdapter extends BaseAdapter {
             holder = (ViewHolder)convertView.getTag();
         }
 
+        Spanned htmlSpan = Html.fromHtml(Html.fromHtml(tennisModelArrayList.get(position).getDescription()).toString(), null, null);
+        holder.tvcity.setText("Description: "+htmlSpan);
         Picasso.get().load(tennisModelArrayList.get(position).getImgURL()).into(holder.iv);
-        holder.tvname.setText("Name: "+tennisModelArrayList.get(position).getName());
-        holder.tvcountry.setText("Country: "+tennisModelArrayList.get(position).getCountry());
-        holder.tvcity.setText("City: "+tennisModelArrayList.get(position).getCity());
+        holder.tvname.setText("Name: "+Html.fromHtml(tennisModelArrayList.get(position).getName()));
+        holder.tvcountry.setText("Title: "+Html.fromHtml(tennisModelArrayList.get(position).getTitle()));
+      //  holder.tvcity.setText("Description: "+ Html.fromHtml(tennisModelArrayList.get(position).getDescription()));
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailsActivity.class);
-                intent.putExtra("city", tennisModelArrayList.get(position).getCity());
+                intent.putExtra("city", tennisModelArrayList.get(position).getDescription());
                 intent.putExtra("imageUrl", tennisModelArrayList.get(position).getImgURL());
 
                 startActivity(context,intent,null);
@@ -96,5 +102,7 @@ public class TennisAdapter extends BaseAdapter {
         protected TextView tvname, tvcountry, tvcity;
         protected ImageView iv;
     }
+
+
 
 }
