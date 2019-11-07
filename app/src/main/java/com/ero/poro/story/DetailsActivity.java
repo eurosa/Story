@@ -83,6 +83,7 @@ public class DetailsActivity extends AppCompatActivity {
         coiu.setText(htmlSpan);
 
 
+
 /*
         UrlImageParser p = new UrlImageParser(coiu, this);
         Spanned htmlSpan = Html.fromHtml(idNote, p, null);
