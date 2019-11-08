@@ -16,9 +16,13 @@ import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.squareup.picasso.Picasso;
 
 import java.io.BufferedInputStream;
@@ -39,6 +43,7 @@ public class DetailsActivity extends AppCompatActivity {
     Drawable d = null;
     Bitmap bmpImage;
     public Drawable imageDraw;
+    private AdView adView;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -48,6 +53,11 @@ public class DetailsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         ImageView imageView=findViewById(R.id.imagePreview);
         setSupportActionBar(toolbar);
+
+        MobileAds.initialize(this,getString(R.string.admob_app_id));
+        adView = findViewById(R.id.adViewDetails);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
 
         if (getSupportActionBar() != null) {

@@ -13,6 +13,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.NativeExpressAdView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -65,10 +68,16 @@ public class TennisAdapter extends BaseAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.lv_player, null, true);
 
+           /* holder.adView = convertView.findViewById(R.id.adView);*/
+
+
             holder.iv = convertView.findViewById(R.id.iv);
             holder.tvname = convertView.findViewById(R.id.name);
             holder.tvcountry = convertView.findViewById(R.id.country);
             holder.tvcity = convertView.findViewById(R.id.city);
+
+            AdRequest adRequest = new AdRequest.Builder().build();
+           // holder.adView.loadAd(adRequest);
 
             convertView.setTag(holder);
         }else {
@@ -101,6 +110,7 @@ public class TennisAdapter extends BaseAdapter {
 
         protected TextView tvname, tvcountry, tvcity;
         protected ImageView iv;
+        protected AdView adView;
     }
 
 
