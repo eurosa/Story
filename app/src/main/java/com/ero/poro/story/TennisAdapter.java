@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.Html;
 import android.text.Spanned;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.squareup.picasso.Picasso;
 
@@ -26,11 +28,13 @@ public class TennisAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<TennisModel> tennisModelArrayList;
+    private InterstitialAd interstitialAd;
 
-    public TennisAdapter(Context context, ArrayList<TennisModel> tennisModelArrayList) {
+    public TennisAdapter(Context context, ArrayList<TennisModel> tennisModelArrayList, InterstitialAd mInterstitialAd) {
 
         this.context = context;
         this.tennisModelArrayList = tennisModelArrayList;
+        this.interstitialAd=mInterstitialAd;
     }
 
     @Override
@@ -94,6 +98,14 @@ public class TennisAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (interstitialAd.isLoaded()) {
+                    interstitialAd.show();
+                } else {
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                }
+
+
                 Intent intent = new Intent(context, DetailsActivity.class);
                 intent.putExtra("city", tennisModelArrayList.get(position).getDescription());
                 intent.putExtra("imageUrl", tennisModelArrayList.get(position).getImgURL());

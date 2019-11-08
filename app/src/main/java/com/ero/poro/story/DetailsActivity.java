@@ -20,8 +20,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.squareup.picasso.Picasso;
 
@@ -44,6 +46,7 @@ public class DetailsActivity extends AppCompatActivity {
     Bitmap bmpImage;
     public Drawable imageDraw;
     private AdView adView;
+    private InterstitialAd mInterstitialAd;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -55,6 +58,26 @@ public class DetailsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         MobileAds.initialize(this,getString(R.string.admob_app_id));
+
+        //================================Interstitial Add==============================================
+     /*
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+
+        });
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            Log.d("TAG", "The interstitial wasn't loaded yet.");
+        }*/
+//=====================================================================================
         adView = findViewById(R.id.adViewDetails);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
