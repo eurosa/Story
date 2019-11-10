@@ -5,13 +5,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-    /* To setup the search dialog, first declare in your manifest that you want to support
-    older devices, but want to target Android 3.0 or later versions. When you do this,
-    your application automatically uses the action
-    bar on Android 3.0 or later and uses the traditional menu system on older devices:
-    */
-
-    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="15" />
 
 
     <application
