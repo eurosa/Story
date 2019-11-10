@@ -2,8 +2,6 @@ package com.ero.poro.story;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
@@ -11,29 +9,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.NativeExpressAdView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
-public class TennisAdapter extends BaseAdapter {
+public class TennisAdapter extends BaseAdapter implements Filterable {
 
     private Context context;
     private ArrayList<TennisModel> tennisModelArrayList;
+    private ArrayList<TennisModel> searchList;
+
     private InterstitialAd interstitialAd;
+    private int i;
+    // private FriendFilter friendFilter;
 
     public TennisAdapter(Context context, ArrayList<TennisModel> tennisModelArrayList, InterstitialAd mInterstitialAd) {
 
         this.context = context;
         this.tennisModelArrayList = tennisModelArrayList;
+        if(tennisModelArrayList!=null) {
+            this.searchList = tennisModelArrayList;
+        }
         this.interstitialAd=mInterstitialAd;
     }
 
@@ -117,6 +123,99 @@ public class TennisAdapter extends BaseAdapter {
 
         return convertView;
     }
+/*
+    @Override
+    public Filter getFilter() {
+        if (friendFilter == null) {
+
+            friendFilter = new FriendFilter();
+
+        }
+
+        return friendFilter;
+    }
+
+*/
+
+    @Override
+    public Filter getFilter() {
+        Filter filter = new Filter() {
+
+            @SuppressWarnings("unchecked")
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+               // searchList.clear();
+                tennisModelArrayList = (ArrayList<TennisModel>) results.values; // has the filtered values
+                  // notifies the data with new filtered values
+               // searchList.get(27).getName();
+               // Log.d("sara",searchList.get(0).getDescription());
+
+                notifyDataSetChanged();
+
+
+            }
+
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                i=0;
+                FilterResults results = new FilterResults();        // Holds the results of a filtering operation in values
+                ArrayList<TennisModel> FilteredArrList = new ArrayList<>();
+
+               // if (tennisModelArrayList == null) {
+                    tennisModelArrayList = new ArrayList<>(searchList); // saves the original data in mOriginalValues
+               // }
+
+                Log.d("Size","Sara"+searchList.size()+" "+tennisModelArrayList.size());
+
+                /********
+                 *
+                 *  If constraint(CharSequence that is received) is null returns the mOriginalValues(Original) values
+                 *  else does the Filtering and returns FilteredArrList(Filtered)
+                 *
+                 ********/
+                if (constraint == null || constraint.length() == 0) {
+
+                    // set the Original result to return
+                    results.count = tennisModelArrayList.size();
+                    results.values = tennisModelArrayList;
+                   // Toast.makeText(context, results.count, Toast.LENGTH_SHORT).show();
+                } else {
+                    constraint = constraint.toString().toLowerCase();
+
+                    while ( i < tennisModelArrayList.size()) {
+                     //   String data = tennisModelArrayList.get(i).getName() + " " +
+
+                        //           tennisModelArrayList.get(i).getTitle();
+
+                      //  Toast.makeText(context, constraint, Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(context, "lob "+tennisModelArrayList.size(), Toast.LENGTH_SHORT).show();
+
+                       if (tennisModelArrayList.get(i).getName().toLowerCase().startsWith(constraint.toString())) {
+                        FilteredArrList.add(tennisModelArrayList.get(i));
+                         //  Log.d("increment","sexy "+i+" Tennis: "+tennisModelArrayList.get(i).getName());
+
+                       }
+                      //  Toast.makeText(context, "ince "+i, Toast.LENGTH_SHORT).show();
+
+                        i++;
+                    }
+                    Log.d("increment","sexy "+i+" Tennis: "+tennisModelArrayList.size()+""+searchList.size());
+
+                    // set the Filtered result to return
+                    results.count = FilteredArrList.size();
+                    results.values = FilteredArrList;
+                }
+                return results;
+            }
+        };
+        return filter;
+    }
+
+    public ArrayList<TennisModel> getSearchList()
+    {
+        return searchList;
+    }
+
 
     private class ViewHolder {
 
@@ -125,6 +224,69 @@ public class TennisAdapter extends BaseAdapter {
         protected AdView adView;
     }
 
+    /**
+     * Custom filter for friend list
+     * Filter content in friend list according to the search text
+     */
+    /*
+    private class FriendFilter extends Filter {
+
+        public ArrayList<TennisModel> filteredList;
+        ArrayList<TennisModel> tempList;
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            Toast.makeText(context, "janeman", Toast.LENGTH_SHORT).show();
+
+            FilterResults filterResults = new FilterResults();
+           // if (constraint!=null && constraint.length()>0) {
+             //   tempList = new ArrayList<>();
+
+                // search content in friend list
+               // for (TennisModel model : tennisModelArrayList) {
+                  //  if (model.getName().toLowerCase().contains(constraint.toString().toLowerCase())) {
+                    //    Toast.makeText(context, model.getName()+"#Sex#"+constraint, Toast.LENGTH_SHORT).show();
+
+                       // tempList.add(model);
+                   // }
+               // }
+                //Toast.makeText(context, "janeman", Toast.LENGTH_SHORT).show();
 
 
-}
+              //  adapter = new ListViewAdapter(context.getApplicationContext(), tempList);
+
+                //listview.setAdapter(adapter);
+               // filteredList=tempList;
+                //filterResults.count = tempList.size();
+                //filterResults.values = tempList;
+          //  } else {
+               // filteredList=tempList;
+
+                //filterResults.count = tennisModelArrayList.size();
+                //filterResults.values = tennisModelArrayList;
+          //  }
+
+
+
+            return filterResults;
+        }
+
+*/
+        /**
+         * Notify about filtered list to ui
+         * @param constraint text
+         * @param results filtered result
+         */
+        //@SuppressWarnings("unchecked")
+        //@Override
+        //protected void publishResults(CharSequence constraint, FilterResults results) {
+
+           // filteredList = (ArrayList<TennisModel>) results.values;
+
+         //   notifyDataSetChanged();
+       // }
+    }
+
+
+
+
