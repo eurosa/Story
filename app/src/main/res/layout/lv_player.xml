@@ -48,18 +48,21 @@
             android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:id="@+id/name"
+            android:textColor="@android:color/white"
             android:text="ddd"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:id="@+id/country"
+            android:textColor="@android:color/white"
             android:text="ddd"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:id="@+id/city"
+            android:textColor="@android:color/white"
             android:text="ddd"/>
 
 

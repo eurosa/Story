@@ -77,8 +77,11 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.lv_player, null, true);
+            //snip
+            convertView.setBackgroundResource(R.drawable.customshape);
+            //snip
 
-           /* holder.adView = convertView.findViewById(R.id.adView);*/
+            /* holder.adView = convertView.findViewById(R.id.adView);*/
 
 
             holder.iv = convertView.findViewById(R.id.iv);
