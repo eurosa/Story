@@ -60,8 +60,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="$USER_HOME$/AndroidAssets/Story Application/magnifying-glass.svg" />
-                                      <entry key="outputName" value="ic_search" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/AndroidAssets/Story Application/golden_star_of_david_6_cm_round_badge-r6a072cc56d6c4e738545b86344af98df_k94rf_307.jpg" />
+                                      <entry key="outputName" value="ic_star_of_david" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -130,8 +130,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_menu_button" />
-                            <entry key="sourceFile" value="$USER_HOME$/Downloads/menu-button.svg" />
+                            <entry key="outputName" value="ic_question" />
+                            <entry key="sourceFile" value="$USER_HOME$/AndroidAssets/Story Application/question.svg" />
                           </map>
                         </option>
                       </PersistentState>

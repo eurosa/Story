@@ -33,37 +33,42 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:scaleType="fitXY"
-        android:id="@+id/iv"/>
+        android:id="@+id/iv"
+        android:layout_marginStart="10dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        android:layout_marginTop="2dp"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="1dp"
+
             android:layout_weight="1"
             android:id="@+id/name"
             android:textColor="@android:color/white"
-            android:text="ddd"/>
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
+
             android:id="@+id/country"
             android:textColor="@android:color/white"
-            android:text="ddd"/>
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
+
             android:id="@+id/city"
             android:textColor="@android:color/white"
-            android:text="ddd"/>
+            />
 
 
 

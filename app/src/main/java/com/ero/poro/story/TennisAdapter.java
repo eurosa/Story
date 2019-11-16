@@ -2,8 +2,12 @@ package com.ero.poro.story;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.text.Html;
+import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,6 +80,7 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
             holder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            assert inflater != null;
             convertView = inflater.inflate(R.layout.lv_player, null, true);
             //snip
             convertView.setBackgroundResource(R.drawable.customshape);
@@ -98,11 +103,22 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
             holder = (ViewHolder)convertView.getTag();
         }
 
-        Spanned htmlSpan = Html.fromHtml(Html.fromHtml(tennisModelArrayList.get(position).getDescription()).toString(), null, null);
-        holder.tvcity.setText("Description: "+htmlSpan);
+        Spanned htmlCity = Html.fromHtml(Html.fromHtml(tennisModelArrayList.get(position).getDescription()).toString(), null, null);
+        Spanned htmlName = Html.fromHtml(Html.fromHtml(tennisModelArrayList.get(position).getName()).toString(), null, null);
+        Spanned htmlTitle = Html.fromHtml(Html.fromHtml(tennisModelArrayList.get(position).getTitle()).toString(), null, null);
+
+        SpannableString spanString = new SpannableString(htmlCity);
+        spanString.setSpan(new UnderlineSpan(), 0, spanString.length(), 0);
+        spanString.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString.length(), 0);
+        spanString.setSpan(new StyleSpan(Typeface.ITALIC), 0, spanString.length(), 0);
+        //text.setText(spanString);
+
+        holder.tvcity.setText(spanString);
+
+
         Picasso.get().load(tennisModelArrayList.get(position).getImgURL()).into(holder.iv);
-        holder.tvname.setText("Name: "+Html.fromHtml(tennisModelArrayList.get(position).getName()));
-        holder.tvcountry.setText("Title: "+Html.fromHtml(tennisModelArrayList.get(position).getTitle()));
+        holder.tvname.setText(htmlName);
+        holder.tvcountry.setText(htmlTitle);
       //  holder.tvcity.setText("Description: "+ Html.fromHtml(tennisModelArrayList.get(position).getDescription()));
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,9 +238,9 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
 
     private class ViewHolder {
 
-        protected TextView tvname, tvcountry, tvcity;
-        protected ImageView iv;
-        protected AdView adView;
+        TextView tvname, tvcountry, tvcity;
+        ImageView iv;
+        private AdView adView;
     }
 
     /**
