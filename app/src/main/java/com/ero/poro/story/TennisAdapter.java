@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -93,7 +95,7 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
             holder.tvname = convertView.findViewById(R.id.name);
             holder.tvcountry = convertView.findViewById(R.id.country);
             holder.tvcity = convertView.findViewById(R.id.city);
-
+            setUpFadeAnimation(holder.tvcity);
             AdRequest adRequest = new AdRequest.Builder().build();
            // holder.adView.loadAd(adRequest);
 
@@ -291,6 +293,52 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
         }
 
 */
+
+    private void setUpFadeAnimation(final TextView textView) {
+        // Start from 0.1f if you desire 90% fade animation
+        final Animation fadeIn = new AlphaAnimation(0.0f, 1.0f);
+        fadeIn.setDuration(500);//1000
+        fadeIn.setStartOffset(500);//3000
+        // End to 0.1f if you desire 90% fade animation
+        final Animation fadeOut = new AlphaAnimation(1.0f, 0.0f);
+        fadeOut.setDuration(500);//1000
+        fadeOut.setStartOffset(500);//3000
+
+        fadeIn.setAnimationListener(new Animation.AnimationListener(){
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+                // start fadeOut when fadeIn ends (continue)
+                textView.startAnimation(fadeOut);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation arg0) {
+            }
+
+            @Override
+            public void onAnimationStart(Animation arg0) {
+            }
+        });
+
+        fadeOut.setAnimationListener(new Animation.AnimationListener(){
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+                // start fadeIn when fadeOut ends (repeat)
+                textView.startAnimation(fadeIn);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation arg0) {
+            }
+
+            @Override
+            public void onAnimationStart(Animation arg0) {
+            }
+        });
+
+        textView.startAnimation(fadeOut);
+    }
+
         /**
          * Notify about filtered list to ui
          * @param constraint text
@@ -304,6 +352,10 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
 
          //   notifyDataSetChanged();
        // }
+
+
+
+
     }
 
 
