@@ -72,6 +72,36 @@ public class DetailsActivity extends AppCompatActivity {
         MobileAds.initialize(this,getString(R.string.admob_app_id));
 
         //================================Interstitial Add==============================================
+    /*    mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+
+        });
+
+        if(mInterstitialAd.isLoaded()) {
+            // Step 1: Display the interstitial
+            mInterstitialAd.show();
+            // Step 2: Attach an AdListener
+            mInterstitialAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdClosed() {
+                    // Step 2.1: Load another ad
+                    AdRequest adRequest = new AdRequest.Builder()
+                            .build();
+                    mInterstitialAd.loadAd(adRequest);
+
+
+                }
+            });
+        }
+*/
+
      /*
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
@@ -88,6 +118,34 @@ public class DetailsActivity extends AppCompatActivity {
             mInterstitialAd.show();
         } else {
             Log.d("TAG", "The interstitial wasn't loaded yet.");
+        }*/
+
+
+/*
+// Has the interstitial loaded successfully?
+// If it has loaded, perform these actions
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        if(mInterstitialAd.isLoaded()) {
+            // Step 1: Display the interstitial
+            mInterstitialAd.show();
+            // Step 2: Attach an AdListener
+            mInterstitialAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdClosed() {
+                    // Step 2.1: Load another ad
+                    AdRequest adRequest = new AdRequest.Builder()
+                            .build();
+                    mInterstitialAd.loadAd(adRequest);
+
+                    // Step 2.2: Start the new activity
+                    startActivity(new Intent(DetailsActivity.this, Main2Activity.class));
+                }
+            });
+        }
+// If it has not loaded due to any reason simply load the next activity
+        else {
+            startActivity(new Intent(DetailsActivity.this, Main2Activity.class));
         }*/
 //=====================================================================================
         adView = findViewById(R.id.adViewDetails);
