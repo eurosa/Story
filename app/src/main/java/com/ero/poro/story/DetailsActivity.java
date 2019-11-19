@@ -12,6 +12,7 @@ import android.os.Bundle;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 
 import android.text.Html;
 import android.text.Spanned;
@@ -25,6 +26,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 import java.io.BufferedInputStream;
@@ -47,15 +49,25 @@ public class DetailsActivity extends AppCompatActivity {
     public Drawable imageDraw;
     private AdView adView;
     private InterstitialAd mInterstitialAd;
-
+    FloatingActionButton myFab;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        Toolbar toolbar = findViewById(R.id.toolbar1);
+        //Toolbar toolbar = findViewById(R.id.toolbar1);
         ImageView imageView=findViewById(R.id.imagePreview);
-        setSupportActionBar(toolbar);
+       // setSupportActionBar(toolbar);
+        myFab = findViewById(R.id.toolbar1);
+        myFab.setImageResource(R.drawable.ic_arrow_point_to_back);
+    //    myFab.setBackgroundColor(getResources().getColor(R.color.browser_actions_bg_grey));
+       // myFab.setIcon(R.drawable.world_map);
+        myFab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+              onBackPressed();
+            }
+        });
+
 
         MobileAds.initialize(this,getString(R.string.admob_app_id));
 
@@ -108,7 +120,7 @@ public class DetailsActivity extends AppCompatActivity {
                 "f9dd8b16d54f483f22c0b7a7e3d840f9?s=32&d=identicon&r=PG'/>" +
                 " This is a test " +
                 "<img src='http://www.gravatar.com/avatar/a9317e7f0a78bb10a980cadd9dd035c9?s=32&d=identicon&r=PG'/>";
-//http://youvu.000webhostapp.com/inventory-management-system/assests/images/stock/5064288225db290dd30773.png
+         //http://youvu.000webhostapp.com/inventory-management-system/assests/images/stock/5064288225db290dd30773.png
 
 
         URLImageParser p = new URLImageParser(coiu, this,idNote);
@@ -196,6 +208,12 @@ public class DetailsActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+
+            super.onBackPressed();
+
+    }
 
 
 Html.ImageGetter imageGetter3 =  new Html.ImageGetter() {

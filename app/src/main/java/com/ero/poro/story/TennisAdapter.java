@@ -95,7 +95,7 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
             holder.tvname = convertView.findViewById(R.id.name);
             holder.tvcountry = convertView.findViewById(R.id.country);
             holder.tvcity = convertView.findViewById(R.id.city);
-            setUpFadeAnimation(holder.tvcity);
+           // setUpFadeAnimation(holder.tvcity);
             AdRequest adRequest = new AdRequest.Builder().build();
            // holder.adView.loadAd(adRequest);
 
@@ -109,18 +109,28 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
         Spanned htmlName = Html.fromHtml(Html.fromHtml(tennisModelArrayList.get(position).getName()).toString(), null, null);
         Spanned htmlTitle = Html.fromHtml(Html.fromHtml(tennisModelArrayList.get(position).getTitle()).toString(), null, null);
 
-        SpannableString spanString = new SpannableString(htmlCity);
-        spanString.setSpan(new UnderlineSpan(), 0, spanString.length(), 0);
-        spanString.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString.length(), 0);
-        spanString.setSpan(new StyleSpan(Typeface.ITALIC), 0, spanString.length(), 0);
+        SpannableString spanCity = new SpannableString(htmlCity);
+        spanCity.setSpan(new UnderlineSpan(), 0, spanCity.length(), 0);
+        spanCity.setSpan(new StyleSpan(Typeface.BOLD), 0, spanCity.length(), 0);
+        spanCity.setSpan(new StyleSpan(Typeface.ITALIC), 0, spanCity.length(), 0);
         //text.setText(spanString);
 
-        holder.tvcity.setText(spanString);
+        SpannableString spanName = new SpannableString(htmlName);
+        spanName.setSpan(new UnderlineSpan(), 0, spanName.length(), 0);
+        spanName.setSpan(new StyleSpan(Typeface.BOLD), 0, spanName.length(), 0);
+        spanName.setSpan(new StyleSpan(Typeface.ITALIC), 0, spanName.length(), 0);
+
+        SpannableString spanTitle = new SpannableString(htmlTitle);
+        spanTitle.setSpan(new UnderlineSpan(), 0, spanTitle.length(), 0);
+        spanTitle.setSpan(new StyleSpan(Typeface.BOLD), 0, spanTitle.length(), 0);
+        spanTitle.setSpan(new StyleSpan(Typeface.ITALIC), 0, spanTitle.length(), 0);
+
+        holder.tvcity.setText(spanCity);
 
 
         Picasso.get().load(tennisModelArrayList.get(position).getImgURL()).into(holder.iv);
-        holder.tvname.setText(htmlName);
-        holder.tvcountry.setText(htmlTitle);
+        holder.tvname.setText(spanName);
+        holder.tvcountry.setText(spanTitle);
       //  holder.tvcity.setText("Description: "+ Html.fromHtml(tennisModelArrayList.get(position).getDescription()));
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DetailsActivity"
+    android:layout_marginTop="0dp"
     tools:showIn="@layout/activity_details"
-    android:layout_marginTop="56dp"
+
     >
     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -20,10 +21,10 @@
             android:id="@+id/imagePreview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/txtSenha"
-        app:layout_constraintVertical_chainStyle="packed" />
+            android:layout_marginTop="56dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/txtSenha"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/txtSenha"
@@ -37,13 +38,36 @@
             android:id="@+id/wer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-android:textColor="@android:color/white"
+        android:textColor="@android:color/white"
         app:layout_constraintTop_toBottomOf="@+id/txtSenha"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+<!--
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
+            app:layout_constraintBottom_toBottomOf="@+id/wer"
+            android:background="@android:color/transparent"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            >
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar1"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                />
+
+        </com.google.android.material.appbar.AppBarLayout>
+-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 </androidx.core.widget.NestedScrollView>
 
 
