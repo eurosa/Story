@@ -25,6 +25,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import static androidx.core.content.ContextCompat.startActivity;
@@ -126,12 +127,24 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
         spanTitle.setSpan(new StyleSpan(Typeface.ITALIC), 0, spanTitle.length(), 0);
 
         holder.tvcity.setText(spanCity);
-
-
+try {
+    ImageFileFilter file = new ImageFileFilter(new File(tennisModelArrayList.get(position).getImgURL()));
+    if (file.accept(new File(tennisModelArrayList.get(position).getImgURL()))) {
         Picasso.get().load(tennisModelArrayList.get(position).getImgURL()).into(holder.iv);
+
+    } else {
+
+      //  Picasso.get().load(R.drawable.ic_star_of_david_background).into(holder.iv);
+        Log.d("imagepicasso", "" + tennisModelArrayList.get(position).getImgURL());
+
+    }
+}catch(Exception e){
+    e.printStackTrace();
+}
+       //Picasso.get().load(tennisModelArrayList.get(position).getImgURL()).into(holder.iv);
         holder.tvname.setText(spanName);
         holder.tvcountry.setText(spanTitle);
-      //  holder.tvcity.setText("Description: "+ Html.fromHtml(tennisModelArrayList.get(position).getDescription()));
+       //holder.tvcity.setText("Description: "+ Html.fromHtml(tennisModelArrayList.get(position).getDescription()));
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
