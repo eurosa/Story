@@ -234,7 +234,7 @@ try {
                       //  Toast.makeText(context, constraint, Toast.LENGTH_SHORT).show();
                       //  Toast.makeText(context, "lob "+tennisModelArrayList.size(), Toast.LENGTH_SHORT).show();
 
-                       if (tennisModelArrayList.get(i).getName().toLowerCase().startsWith(constraint.toString())) {
+                       if (tennisModelArrayList.get(i).getName().toLowerCase().startsWith(constraint.toString())||tennisModelArrayList.get(i).getTitle().toLowerCase().startsWith(constraint.toString())) {
                         FilteredArrList.add(tennisModelArrayList.get(i));
                          //  Log.d("increment","sexy "+i+" Tennis: "+tennisModelArrayList.get(i).getName());
 
