@@ -65,10 +65,15 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:requiresFadingEdge="horizontal"
-            android:fadingEdgeLength="150dp"
-            android:id="@+id/city"
+
+            android:fadingEdge="horizontal"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+
             android:textColor="@android:color/white"
+            android:maxLines="1"
+            android:id="@+id/city"
+
             />
 
 

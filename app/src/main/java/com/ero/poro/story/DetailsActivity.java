@@ -12,6 +12,7 @@ import android.os.Bundle;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.text.HtmlCompat;
 import androidx.core.view.GravityCompat;
 
 import android.text.Html;
@@ -182,7 +183,7 @@ public class DetailsActivity extends AppCompatActivity {
 
 
         URLImageParser p = new URLImageParser(coiu, this,idNote);
-        Spanned htmlSpan = Html.fromHtml(Html.fromHtml(idNote).toString(), p, null);
+        Spanned htmlSpan = HtmlCompat.fromHtml(HtmlCompat.fromHtml(idNote,HtmlCompat.FROM_HTML_MODE_LEGACY).toString(), HtmlCompat.FROM_HTML_MODE_LEGACY, p, null);
         coiu.setText(htmlSpan);
 
 

@@ -20,6 +20,8 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.text.HtmlCompat;
+
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
@@ -97,6 +99,7 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
             holder.tvcountry = convertView.findViewById(R.id.country);
             holder.tvcity = convertView.findViewById(R.id.city);
            // setUpFadeAnimation(holder.tvcity);
+            holder.tvcity.setSelected(true);
             AdRequest adRequest = new AdRequest.Builder().build();
            // holder.adView.loadAd(adRequest);
 
@@ -106,9 +109,9 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
             holder = (ViewHolder)convertView.getTag();
         }
 
-        Spanned htmlCity = Html.fromHtml(Html.fromHtml(tennisModelArrayList.get(position).getDescription()).toString(), null, null);
-        Spanned htmlName = Html.fromHtml(Html.fromHtml(tennisModelArrayList.get(position).getName()).toString(), null, null);
-        Spanned htmlTitle = Html.fromHtml(Html.fromHtml(tennisModelArrayList.get(position).getTitle()).toString(), null, null);
+        Spanned htmlCity = HtmlCompat.fromHtml(HtmlCompat.fromHtml(tennisModelArrayList.get(position).getDescription(),HtmlCompat.FROM_HTML_MODE_LEGACY).toString(), HtmlCompat.FROM_HTML_MODE_LEGACY,null, null);
+        Spanned htmlName = HtmlCompat.fromHtml(HtmlCompat.fromHtml(tennisModelArrayList.get(position).getName(),HtmlCompat.FROM_HTML_MODE_LEGACY).toString(), HtmlCompat.FROM_HTML_MODE_LEGACY,null, null);
+        Spanned htmlTitle = HtmlCompat.fromHtml(HtmlCompat.fromHtml(tennisModelArrayList.get(position).getTitle(),HtmlCompat.FROM_HTML_MODE_LEGACY).toString(), HtmlCompat.FROM_HTML_MODE_LEGACY, null, null);
 
         SpannableString spanCity = new SpannableString(htmlCity);
         spanCity.setSpan(new UnderlineSpan(), 0, spanCity.length(), 0);
@@ -127,6 +130,7 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
         spanTitle.setSpan(new StyleSpan(Typeface.ITALIC), 0, spanTitle.length(), 0);
 
         holder.tvcity.setText(spanCity);
+        holder.tvcity.setSelected(true);
 try {
     ImageFileFilter file = new ImageFileFilter(new File(tennisModelArrayList.get(position).getImgURL()));
     if (file.accept(new File(tennisModelArrayList.get(position).getImgURL()))) {
