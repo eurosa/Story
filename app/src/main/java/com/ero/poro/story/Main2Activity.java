@@ -33,7 +33,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+
 import com.google.android.gms.ads.MobileAds;
 
 import com.google.android.material.navigation.NavigationView;
@@ -69,7 +69,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
     //----------------------------------------------------------------------------------
     //private String jsonURL = "https://demonuts.com/Demonuts/JsonTest/Tennis/json_parsing.php";
     //https must be given otherwise data not will be loaded because you already set ssl
-    private String jsonURL = "https://timxn.com/sexposition.php";
+    private String jsonURL = "https://timxn.com/ecom/sexposition.php";
 
     private final int jsoncode = 1;
     public ListView listView;
@@ -86,7 +86,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
     public View about_us;
     ProgressBar progbar;
     private NetworkChangeReceiver mNetworkReceiver;
-    private InterstitialAd mInterstitialAd;
+
     SearchView searchView = null;
     public MenuItem searchMenuItem;
      public SwipeRefreshLayout pullToRefresh;
@@ -117,20 +117,9 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });*/
-        // Initialize the Google Mobile Ads SDK
-        MobileAds.initialize(this,getString(R.string.admob_app_id));
+       // MobileAds.initialize(this, R.string.admob_app_id);
 //=========================================Interstitial Ad=====================================================
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-8127887406337874/1509079480");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                // Load the next interstitial.
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
-            }
 
-        });
        // if (mInterstitialAd.isLoaded()) {
            // mInterstitialAd.show();
        // } else {
@@ -140,7 +129,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
 //==============================================================================================================
 
         drawerLayout=findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.navigation_drawer_open,
+        ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(this,drawerLayout, R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
@@ -220,7 +209,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
                             // removeSimpleProgressDialog();  //will remove progress dialog
                             try {
                                 tennisModelArrayList = getArrayInfoSqlite();
-                                tennisAdapter = new TennisAdapter((Context) runnable, tennisModelArrayList, mInterstitialAd);
+                                tennisAdapter = new TennisAdapter((Context) runnable, tennisModelArrayList);
                                 listView.setAdapter(tennisAdapter);
                                 listView.setTextFilterEnabled(true);
                             } catch (Exception e) {
@@ -278,7 +267,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
                         // removeSimpleProgressDialog();  //will remove progress dialog
                         try {
                             tennisModelArrayList = getArrayInfoSqlite();
-                            tennisAdapter = new TennisAdapter((Context) runnable, tennisModelArrayList, mInterstitialAd);
+                            tennisAdapter = new TennisAdapter((Context) runnable, tennisModelArrayList);
                             listView.setAdapter(tennisAdapter);
                             listView.setTextFilterEnabled(true);
                         } catch (Exception e) {
@@ -475,7 +464,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
 
                     removeSimpleProgressDialog();  //will remove progress dialog
                     tennisModelArrayList = getInfo(response);
-                    tennisAdapter = new TennisAdapter(this,tennisModelArrayList,mInterstitialAd);
+                    tennisAdapter = new TennisAdapter(this,tennisModelArrayList);
                     listView.setAdapter(tennisAdapter);
                     listView.setTextFilterEnabled(true);
                     //setupSearchView();
@@ -506,7 +495,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
                         // removeSimpleProgressDialog();  //will remove progress dialog
                         try {
                             tennisModelArrayList = getArrayInfoSqlite();
-                            tennisAdapter = new TennisAdapter(this, tennisModelArrayList, mInterstitialAd);
+                            tennisAdapter = new TennisAdapter(this, tennisModelArrayList);
                             listView.setAdapter(tennisAdapter);
                             listView.setTextFilterEnabled(true);
                         } catch (Exception e) {

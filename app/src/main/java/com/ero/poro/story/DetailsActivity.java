@@ -25,8 +25,9 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
@@ -70,7 +71,7 @@ public class DetailsActivity extends AppCompatActivity {
         });
 
 
-        MobileAds.initialize(this,getString(R.string.admob_app_id));
+       // MobileAds.initialize(this,getString(R.string.admob_app_id));
 
         //================================Interstitial Add==============================================
     /*    mInterstitialAd = new InterstitialAd(this);

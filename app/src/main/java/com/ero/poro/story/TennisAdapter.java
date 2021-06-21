@@ -24,7 +24,7 @@ import androidx.core.text.HtmlCompat;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -38,18 +38,18 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
     private ArrayList<TennisModel> tennisModelArrayList;
     private ArrayList<TennisModel> searchList;
 
-    private InterstitialAd interstitialAd;
+    //private InterstitialAd interstitialAd;
     private int i;
     // private FriendFilter friendFilter;
 
-    public TennisAdapter(Context context, ArrayList<TennisModel> tennisModelArrayList, InterstitialAd mInterstitialAd) {
+    public TennisAdapter(Context context, ArrayList<TennisModel> tennisModelArrayList) {
 
         this.context = context;
         this.tennisModelArrayList = tennisModelArrayList;
         if(tennisModelArrayList!=null) {
             this.searchList = tennisModelArrayList;
         }
-        this.interstitialAd=mInterstitialAd;
+        //this.interstitialAd=mInterstitialAd;
     }
 
     @Override
@@ -152,12 +152,12 @@ try {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+/*
                 if (interstitialAd.isLoaded()) {
                     interstitialAd.show();
                 } else {
                     Log.d("TAG", "The interstitial wasn't loaded yet.");
-                }
+                }*/
 
 
                 Intent intent = new Intent(context, DetailsActivity.class);
