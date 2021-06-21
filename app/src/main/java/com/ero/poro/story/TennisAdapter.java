@@ -98,7 +98,7 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
             holder.tvname = convertView.findViewById(R.id.name);
             holder.tvcountry = convertView.findViewById(R.id.country);
             holder.tvcity = convertView.findViewById(R.id.city);
-           // setUpFadeAnimation(holder.tvcity);
+             //setUpFadeAnimation(holder.tvcity);
             holder.tvcity.setSelected(true);
             AdRequest adRequest = new AdRequest.Builder().build();
            // holder.adView.loadAd(adRequest);
@@ -130,7 +130,7 @@ public class TennisAdapter extends BaseAdapter implements Filterable {
         spanTitle.setSpan(new StyleSpan(Typeface.ITALIC), 0, spanTitle.length(), 0);
 
         holder.tvcity.setText(spanCity);
-        holder.tvcity.setSelected(true);
+       // holder.tvcity.setSelected(true);
 try {
     ImageFileFilter file = new ImageFileFilter(new File(tennisModelArrayList.get(position).getImgURL()));
     if (file.accept(new File(tennisModelArrayList.get(position).getImgURL()))) {

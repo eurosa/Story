@@ -38,7 +38,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginBottom="20dp"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        ads:adUnitId="ca-app-pub-8127887406337874/4212970737">
     </com.google.android.gms.ads.AdView>
 
     <!--

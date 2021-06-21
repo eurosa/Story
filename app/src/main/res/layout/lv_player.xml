@@ -34,6 +34,7 @@
         android:layout_marginLeft="10dp"
         android:scaleType="fitXY"
         android:id="@+id/iv"
+        android:background="@drawable/img"
         android:layout_marginStart="10dp" />
 
     <LinearLayout

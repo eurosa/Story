@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Story</string>
+    <string name="app_name">Bangla Love Story</string>
     <string name="title_activity_details">Details</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -91,7 +91,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">About</string>
-    <string name="title_activity_splash_screen">Splash</string>
+    <string name="title_activity_splash_screen">Bangla Love Story</string>
     <string name="title_activity_navigation">NavigationActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -105,9 +105,9 @@
     <string name="help">Help</string>
     <string name="menu_share">Share</string>
     <string name="menu_review">Rate</string>
-    <string name="title_activity_main2">Story</string>
+    <string name="title_activity_main2">Bangla Love Story</string>
     <string name="test_admob_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="admob_app_id">cca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_app_id">ca-app-pub-8127887406337874~5526052406</string>
     <string name="search_title">Search</string>
     <string name="search_hint">Search</string>
 

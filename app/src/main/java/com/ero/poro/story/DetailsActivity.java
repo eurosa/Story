@@ -170,9 +170,9 @@ public class DetailsActivity extends AppCompatActivity {
         // coiu.setText(Html.fromHtml(Html.fromHtml(idNote).toString(), imgGetter,null));
         imageURL=in.getStringExtra("imageUrl");
         Picasso.get().load(imageURL).into(imageView);
-      //  new DownloadFilesTask ().execute(idNote);
-        //   coiu.setText(Html.fromHtml(Html.fromHtml(idNote, imageGetter, null).toString()));
-     //  coiu.setText(Html.fromHtml(Html.fromHtml(idNote).toString(), imageGetter3, null));
+        //new DownloadFilesTask ().execute(idNote);
+        //coiu.setText(Html.fromHtml(Html.fromHtml(idNote, imageGetter, null).toString()));
+        //  coiu.setText(Html.fromHtml(Html.fromHtml(idNote).toString(), imageGetter3, null));
 
         String html = "Hello " +
                 "<img src='http://www.gravatar.com/avatar/" +
