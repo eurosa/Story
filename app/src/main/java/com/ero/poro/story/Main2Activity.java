@@ -36,6 +36,8 @@ import com.google.android.gms.ads.AdView;
 
 import com.google.android.gms.ads.MobileAds;
 
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -156,6 +158,14 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
 
         listView = findViewById(R.id.lv);
        // listView.setBackgroundResource(R.drawable.customshape);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+
         adView = findViewById(R.id.adViewTop);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);

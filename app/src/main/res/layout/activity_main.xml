@@ -12,91 +12,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Main2Activity"
     android:background="#060101"
+
     >
-
-    <!--
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_main"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary">
-
-
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search"
-        android:layout_centerHorizontal="true" />
-
-
-
-        <ImageButton
-            android:id="@+id/review_button"
-
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginRight="18dp"
-            android:background="@drawable/ic_review"
-
-            />
-
-        <ImageButton
-            android:id="@+id/share_button"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:onClick="share"
-            android:focusable="true"
-            android:layout_marginRight="18dp"
-            android:background="@drawable/ic_sharethis"
-
-            />
-
-        <ImageButton
-            android:id="@+id/help_button"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:focusable="true"
-            android:layout_marginRight="18dp"
-            android:background="@drawable/ic_question_mark_on_a_circular_black_background"
-
-            />
-
-</androidx.appcompat.widget.Toolbar>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Below ListView is populated from JSON Data"
-        android:textColor="#000"
-         />
-         -->
-
-
 
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/lv"
-        android:layout_marginTop="10dp">
-
+        android:layout_marginBottom="100dp"
+        android:layout_marginTop="6dp">
 
     </ListView>
+
 
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adViewTop"
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_alignBottom="@+id/lv"
+
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-8127887406337874/4212970737">
+
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
     </com.google.android.gms.ads.AdView>
 
 
