@@ -20,26 +20,29 @@
 
 
 -->
-
-
-
-    <include layout="@layout/content_details" />
-
-
-
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adViewDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="20dp"
+        android:layout_alignParentTop="true"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-8127887406337874/4212970737">
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
     </com.google.android.gms.ads.AdView>
+
+
+    <include layout="@layout/content_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/adViewDetails"
+        android:layout_marginTop="3dp"/>
+
+
+</RelativeLayout>
+
 
     <!--
 
