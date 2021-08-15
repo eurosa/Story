@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -30,14 +31,18 @@ import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.ui.AppBarConfiguration;
 
+
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -95,6 +100,11 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
     public DatabaseHelper sqlitDb;
     public Note jsonNote;
     private Runnable runnable;
+    private static final String AD_UNIT_ID = "ca-app-pub-8127887406337874/2398989241";
+
+
+    private InterstitialAd interstitialAd;
+    private InterstitialAd mInterstitialAd;
 
 
     @Override
@@ -121,14 +131,25 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
         });*/
        // MobileAds.initialize(this, R.string.admob_app_id);
 //=========================================Interstitial Ad=====================================================
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            }
 
-       // if (mInterstitialAd.isLoaded()) {
-           // mInterstitialAd.show();
-       // } else {
-         //   Log.d("TAG", "The interstitial wasn't loaded yet.");
+        });
+        // if (mInterstitialAd.isLoaded()) {
+        // mInterstitialAd.show();
+        // } else {
+        //   Log.d("TAG", "The interstitial wasn't loaded yet.");
         //}
 
 //==============================================================================================================
+
 
         drawerLayout=findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(this,drawerLayout, R.string.navigation_drawer_open,
@@ -219,7 +240,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
                             // removeSimpleProgressDialog();  //will remove progress dialog
                             try {
                                 tennisModelArrayList = getArrayInfoSqlite();
-                                tennisAdapter = new TennisAdapter((Context) runnable, tennisModelArrayList);
+                                tennisAdapter = new TennisAdapter((Context) runnable, tennisModelArrayList, mInterstitialAd);
                                 listView.setAdapter(tennisAdapter);
                                 listView.setTextFilterEnabled(true);
                             } catch (Exception e) {
@@ -277,7 +298,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
                         // removeSimpleProgressDialog();  //will remove progress dialog
                         try {
                             tennisModelArrayList = getArrayInfoSqlite();
-                            tennisAdapter = new TennisAdapter((Context) runnable, tennisModelArrayList);
+                            tennisAdapter = new TennisAdapter((Context) runnable, tennisModelArrayList, mInterstitialAd);
                             listView.setAdapter(tennisAdapter);
                             listView.setTextFilterEnabled(true);
                         } catch (Exception e) {
@@ -302,6 +323,8 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
 
 
 
+
+
     /*In your on resume check I/N*/
     @Override
     protected void onResume() {
@@ -314,8 +337,10 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
 
         }
 
+       // showInterstitial();
 
      }
+
 
 
 
@@ -474,7 +499,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
 
                     removeSimpleProgressDialog();  //will remove progress dialog
                     tennisModelArrayList = getInfo(response);
-                    tennisAdapter = new TennisAdapter(this,tennisModelArrayList);
+                    tennisAdapter = new TennisAdapter(this,tennisModelArrayList,mInterstitialAd);
                     listView.setAdapter(tennisAdapter);
                     listView.setTextFilterEnabled(true);
                     //setupSearchView();
@@ -505,7 +530,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
                         // removeSimpleProgressDialog();  //will remove progress dialog
                         try {
                             tennisModelArrayList = getArrayInfoSqlite();
-                            tennisAdapter = new TennisAdapter(this, tennisModelArrayList);
+                            tennisAdapter = new TennisAdapter(this, tennisModelArrayList,mInterstitialAd);
                             listView.setAdapter(tennisAdapter);
                             listView.setTextFilterEnabled(true);
                         } catch (Exception e) {
